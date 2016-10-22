@@ -118,6 +118,6 @@ app.all('*', function(req,res){
 	res.status(404).end();
 })
 
-app.listen(4000, function() {
+app.listen(3900, function() {
 	console.log('Express server listening on port 8000');
 })
