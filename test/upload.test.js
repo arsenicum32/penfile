@@ -70,7 +70,7 @@ app.post('/up', function(req,res){
 		var fs = require("fs"), name = namegen(req.body)
   	fs.writeFile( __dirname + '/uploadedfiles/' + name, new Buffer(req.body.sampleFile, "base64"), function(err) {
 			err?res.send(err):res.json({
-				path: 'http://localhost:4000/files/' + "my_new_file"
+				path: 'http://85.143.209.210:3900/files/' + "my_new_file"
 			});
 		});
 	}else{
@@ -100,7 +100,7 @@ app.post('/upload', function(req, res) {
 		}
 		else {
 			res.json({
-				path: 'http://localhost:4000/files/' + sampleFile.name
+				path: 'http://85.143.209.210:3900/files/' + sampleFile.name
 			});
 		}
 	});
@@ -118,6 +118,4 @@ app.all('*', function(req,res){
 	res.status(404).end();
 })
 
-app.listen(3900, function() {
-	console.log('Express server listening on port 8000');
-})
+app.listen(3900);
