@@ -65,19 +65,6 @@ function decodeBase64Image(dataString) {
   return response;
 }
 
-app.post('/up', function(req,res){
-	if(req.body.sampleFile){
-		var fs = require("fs"), name = namegen(req.body)
-  	fs.writeFile( __dirname + '/uploadedfiles/' + name, new Buffer(req.body.sampleFile, "base64"), function(err) {
-			err?res.send(err):res.json({
-				path: 'http://85.143.209.210:3900/files/' + "my_new_file"
-			});
-		});
-	}else{
-		res.json({error: true});
-	}
-})
-
 app.post('/upload', function(req, res) {
 	var sampleFile, uploadPath;
 
@@ -90,7 +77,7 @@ app.post('/upload', function(req, res) {
 
 	console.log(JSON.stringify(Object.keys(sampleFile)));
 
-	sampleFile.name =  namegen(sampleFile);
+	sampleFile.name =  namegen(sampleFile , req.query.canvas );
 
 	uploadPath = __dirname + '/uploadedfiles/' + sampleFile.name;
 
@@ -106,9 +93,9 @@ app.post('/upload', function(req, res) {
 	});
 });
 
-function namegen(data){
+function namegen(data , can){
 	data.mimetype ? void(0) : data.mimetype = data.type ;
-	return chance.word({length: 5}) + '.' + (new Date()).getTime() + '.' + data.mimetype.split('/')[0]
+	return chance.word({length: 5}) + '.' + (new Date()).getTime() + '.'+ (can?can:'no') +'.' + data.mimetype.split('/')[0]
 	 +  '.' + data.name.split('.')[data.name.split('.').length - 1];
 }
 
