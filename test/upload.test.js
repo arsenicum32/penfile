@@ -87,7 +87,7 @@ app.post('/upload', function(req, res) {
 		}
 		else {
 			res.json({
-				path: 'http://85.143.209.210:3900/files/' + sampleFile.name
+				path: 'http://'+req.get('host')+'/files/' + sampleFile.name
 			});
 		}
 	});
