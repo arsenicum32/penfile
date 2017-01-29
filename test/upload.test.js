@@ -106,4 +106,6 @@ app.all('*', function(req,res){
 	res.status(404).end();
 })
 
-app.listen(3900);
+app.listen(3900, function(){
+	console.log("server started on 3900");
+});
