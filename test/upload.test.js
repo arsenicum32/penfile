@@ -7,7 +7,7 @@ var express    = require('express'),
 
 app.use('/form', express.static(__dirname + '/upload.test.html'));
 app.use(cors());
-app.use('/files', express.static(__dirname + '/uploadedfiles/'));
+//app.use('/files', express.static(__dirname + '/uploadedfiles/'));
 
 // default options
 app.use(fileUpload({
@@ -86,8 +86,9 @@ app.post('/upload', function(req, res) {
 			res.status(500).send(err);
 		}
 		else {
+			var HOST = 'penfile.ml' || req.get('host');
 			res.json({
-				path: 'http://'+req.get('host')+'/files/' + sampleFile.name
+				path: 'http://'+HOST+'/' + sampleFile.name
 			});
 		}
 	});
