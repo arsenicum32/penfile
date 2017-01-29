@@ -2,7 +2,7 @@
   "apps" : [{
     "name "       : "penfile",
     "script"      : "./test/upload.test.js",
-    "watch "      : false,
+    "watch "      : true,
     "env": {
       "NODE_ENV": "development",
     },
