@@ -5,8 +5,9 @@ var express    = require('express'),
 	fileType = require('file-type'),
 	chance = new require('chance')();
 
-app.use('/form', express.static(__dirname + '/upload.test.html'));
+
 app.use(cors());
+app.use('/form', express.static(__dirname + '/upload.test.html'));
 //app.use('/files', express.static(__dirname + '/uploadedfiles/'));
 
 // default options
